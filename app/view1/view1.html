@@ -1,0 +1,23 @@
+<label>Buyer <input type="text" ng-model="ctrl.buyer"></label>
+<label>Seller <input type="text" ng-model="ctrl.seller"></label>
+<button ng-click="ctrl.getRecs()">GO!</button>
+<ul>
+    <li ng-repeat="cr in ctrl.cachedRecommendations">{{::cr}}</li>
+</ul>
+<h1>{{ctrl.message}}</h1>
+<table>
+    <tr>
+        <th ng-click="ctrl.orderBy('artist')">artist<span ng-if="ctrl.orderedBy == 'artist'"> {{ctrl.reverse ? 'desc' : 'asc'}}</span></th>
+        <th ng-click="ctrl.orderBy('title')">title<span ng-if="ctrl.orderedBy == 'title'"> {{ctrl.reverse ? 'desc' : 'asc'}}</span></th>
+        <th ng-click="ctrl.orderBy('media')">media<span ng-if="ctrl.orderedBy == 'media'"> {{ctrl.reverse ? 'desc' : 'asc'}}</span></th>
+        <th ng-click="ctrl.orderBy('condition')">condition<span ng-if="ctrl.orderedBy == 'condition'"> {{ctrl.reverse ? 'desc' : 'asc'}}</span></th>
+        <th ng-click="ctrl.orderBy('price')">price<span ng-if="ctrl.orderedBy == 'price'"> {{ctrl.reverse ? 'desc' : 'asc'}}</span></th>
+    </tr>
+    <tr ng-repeat="data in ctrl.data | orderBy:ctrl.orderedBy:ctrl.reverse">
+        <td>{{::data.artist}}</td>
+        <td><a ng-href="{{::data.uri}}">{{::data.title}}</a></td>
+        <td>{{::data.media.join(', ')}}</td>
+        <td>{{::data.condition}}</td>
+        <td>{{::data.currency}} {{::data.price}}</td>
+    </tr>
+</table>
