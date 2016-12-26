@@ -10,6 +10,10 @@ angular.module('discogs', [])
 
             function getPage(pageNumber) {
                 $http.get(baseURL + api + `&page=${pageNumber}`).then((res) => {
+                    deferred.notify({
+                        totalPages: Math.min(res.data.pagination.pages, 100),
+                        actualPage: pageNumber
+                    })
                     results.push(res)
 
                     if (res.data.pagination.pages > pageNumber) {
@@ -38,6 +42,10 @@ angular.module('discogs', [])
 
             function getPage(pageNumber) {
                 $http.get(baseURL + api + `&page=${pageNumber}`).then((res) => {
+                    deferred.notify({
+                        totalPages: Math.min(res.data.pagination.pages, 100),
+                        actualPage: pageNumber
+                    })
                     results.push(res)
 
                     if (res.data.pagination.pages > pageNumber && pageNumber < 100) {
@@ -178,6 +186,26 @@ angular.module('discogs', [])
                     return recommendations
                 })
         }
-        this.getCachedRecommendations = () => discogsCache.getKeys().filter((key) => key.includes(`getRecommendations-`))
+        this.getCachedRecommendations = () => {
+            const cachedKeys = discogsCache.getKeys()
+            const getRecommendationsKey = `getRecommendations-`
+            const keyLength = getRecommendationsKey.length
+            const parsedReccomendations = []
+
+            cachedKeys.forEach((ck) => {
+                if (ck.includes(getRecommendationsKey)) {
+                    const lastDash = ck.lastIndexOf(`-`)
+                    const buyer = ck.substring(keyLength, lastDash)
+                    const seller = ck.substring(lastDash + 1)
+
+                    parsedReccomendations.push({
+                        buyer,
+                        seller
+                    })
+                }
+            })
+
+            return parsedReccomendations
+        }
     }])
     

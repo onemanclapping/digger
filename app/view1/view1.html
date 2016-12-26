@@ -2,9 +2,10 @@
 <label>Seller <input type="text" ng-model="ctrl.seller"></label>
 <button ng-click="ctrl.getRecs()">GO!</button>
 <ul>
-    <li ng-repeat="cr in ctrl.cachedRecommendations">{{::cr}}</li>
+    <li ng-repeat="cr in ctrl.cachedRecommendations"><a href="view1?buyer={{::cr.buyer}}&seller={{::cr.seller}}">buyer: {{::cr.buyer}}; seller: {{::cr.seller}}</a></li>
 </ul>
 <h1>{{ctrl.message}}</h1>
+<progress value="{{ctrl.requestsDone}}" max="{{ctrl.requestsTotal}}"></progress>
 <table>
     <tr>
         <th ng-click="ctrl.orderBy('artist')">artist<span ng-if="ctrl.orderedBy == 'artist'"> {{ctrl.reverse ? 'desc' : 'asc'}}</span></th>

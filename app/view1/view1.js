@@ -16,6 +16,9 @@ angular.module('myApp.view1', ['ngRoute'])
   this.cachedRecommendations = discogsService.getCachedRecommendations()
   this.orderedBy = 'artist'
   this.reverse = false
+  this.requestsDone = 0
+  this.requestsTotal = 100
+
   this.orderBy = (field) => {
     if (this.orderedBy === field) {
       this.reverse = !this.reverse
@@ -27,8 +30,16 @@ angular.module('myApp.view1', ['ngRoute'])
     discogsService.getRecommendations(this.buyer, this.seller).then((r) => {
       this.message = ``
       this.data = r
+    }, angular.noop, (progress) => {
+      this.requestsDone = progress.actualPage
+      this.requestsTotal = progress.totalPages
     })
   }
+  (() => {
+    if ($routeParams.buyer && $routeParams.seller) {
+      this.getRecs()
+    }
+  })()
 
   
 }]);
