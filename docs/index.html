@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>test</title>
-</head>
-<body>
-	such page
-</body>
+<html lang="en" ng-app="myApp" class="no-js">
+    <head>
+        <title>ezDigger</title>
+        <base href="/">
+    </head>
+    <body>
+        <div ng-view></div>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="app.js"></script>
+        <script src="view1/view1.js"></script>
+        <script src="components/discogs/discogs.js"></script>
+    </body>
 </html>
