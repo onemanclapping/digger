@@ -46,7 +46,7 @@ angular.module('myApp.view1', ['ngRoute'])
         }
     })()
 
-    chrome.runtime.sendMessage('odjglohfacbdmlnlieljcccofodghbne', 'diggerReady', undefined, (scrapedInfo) => {
+    chrome.runtime.sendMessage('amjijkpahfilidhhioiikiilbkmohcpf', 'diggerReady', undefined, (scrapedInfo) => {
         this.buyer = scrapedInfo.scrapedPage.username
         this.itemTitle = scrapedInfo.scrapedPage.itemTitle
         this.potentialSellers = scrapedInfo.scrapedPage.items
