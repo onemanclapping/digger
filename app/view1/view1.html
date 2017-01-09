@@ -2,7 +2,7 @@
 <label>Seller <input type="text" ng-model="ctrl.seller"></label>
 <button ng-click="ctrl.getRecs()">GO!</button>
 <ul>
-    <li ng-repeat="cr in ctrl.cachedRecommendations"><a href="view1?buyer={{::cr.buyer}}&seller={{::cr.seller}}">buyer: {{::cr.buyer}}; seller: {{::cr.seller}}</a></li>
+    <li ng-repeat="cr in ctrl.cachedRecommendations"><a href="#!/view1?buyer={{::cr.buyer}}&seller={{::cr.seller}}">buyer: {{::cr.buyer}}; seller: {{::cr.seller}}</a></li>
 </ul>
 <table>
     <tr>
