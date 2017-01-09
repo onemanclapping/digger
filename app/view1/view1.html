@@ -4,6 +4,21 @@
 <ul>
     <li ng-repeat="cr in ctrl.cachedRecommendations"><a href="view1?buyer={{::cr.buyer}}&seller={{::cr.seller}}">buyer: {{::cr.buyer}}; seller: {{::cr.seller}}</a></li>
 </ul>
+<table>
+    <tr>
+        <th>seller</th>
+        <td ng-repeat="seller in ctrl.potentialSellers"
+            ng-click="ctrl.setSeller(seller.sellerName)">{{::seller.sellerName}}</td>
+    </tr>
+    <tr>
+        <th>price</th>
+        <td ng-repeat="seller in ctrl.potentialSellers">{{::seller.price}}</td>
+    </tr>
+    <tr>
+        <th>location</th>
+        <td ng-repeat="seller in ctrl.potentialSellers">{{::seller.shippingLocation}}</td>
+    </tr>
+</table>
 <h1>{{ctrl.message}}</h1>
 <progress value="{{ctrl.requestsDone}}" max="{{ctrl.requestsTotal}}"></progress>
 <table>
