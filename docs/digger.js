@@ -34186,7 +34186,7 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 angular.module('digger.core', []);
 
 angular.module('digger.core')
-	.constant('diggerChromeID', 'amjijkpahfilidhhioiikiilbkmohcpf');
+	.constant('diggerChromeID', 'odjglohfacbdmlnlieljcccofodghbne');
 
 angular.module('digger.discogs', []);
 
