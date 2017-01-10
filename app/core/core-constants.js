@@ -1,2 +1,2 @@
 angular.module('digger.core')
-	.constant('diggerChromeID', 'amjijkpahfilidhhioiikiilbkmohcpf')
+	.constant('diggerChromeID', 'odjglohfacbdmlnlieljcccofodghbne')
