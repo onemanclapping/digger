@@ -5,19 +5,11 @@
     "angular-route": "1.6.1"
   },
   "devDependencies": {
-    "superstatic": "4.0.3"
-  },
-  "scripts": {
-    "build:dev:html": "find app -type f -name '*.html' -exec cp '{}' temp ';'",
-    "build:dev:js": "rollup app/digger.js -f es -o temp/digger.js",
-    "build:prod:html": "find app -type f -name '*.html' -exec cp '{}' docs ';'",
-    "build:prod:js": "rollup app/digger.js -f es -o docs/digger.js",
-    "clean:dev": "rm -rf temp",
-    "clean:prod": "rm -rf docs",
-    "prestart": "npm install",
-    "serve": "superstatic temp -c ./superstatic.json --port 1234 --host 0.0.0.0",
-    
-    "dev": "npm run clean:dev && npm run build:dev:js && npm run build:dev:html && npm run serve",
-    "prod": "npm run clean:prod && npm run build:prod:js && npm run build:prod:html"
+    "del": "2.2.2",
+    "gulp": "3.9.1",
+    "gulp-connect": "5.0.0",
+    "gulp-ng-templates": "0.0.10",
+    "rollup-stream": "1.17.0",
+    "vinyl-source-stream": "1.1.0"
   }
 }

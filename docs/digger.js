@@ -34183,6 +34183,8 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 
 })(window, window.angular);
 
+angular.module("digger.templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("views/browse/browse.html","<label>Buyer <input type=\"text\" ng-model=\"ctrl.buyer\"></label><label>Seller <input type=\"text\" ng-model=\"ctrl.seller\"></label><button ng-click=\"ctrl.getRecs()\">GO!</button><ul><li ng-repeat=\"cr in ctrl.cachedRecommendations\"><a href=\"#!/?buyer={{::cr.buyer}}&seller={{::cr.seller}}\">buyer: {{::cr.buyer}}; seller: {{::cr.seller}}</a></li></ul><table><tr><th>seller</th><td ng-repeat=\"seller in ctrl.potentialSellers\" ng-click=\"ctrl.setSeller(seller.sellerName)\">{{::seller.sellerName}}</td></tr><tr><th>price</th><td ng-repeat=\"seller in ctrl.potentialSellers\">{{::seller.price}}</td></tr><tr><th>location</th><td ng-repeat=\"seller in ctrl.potentialSellers\">{{::seller.shippingLocation}}</td></tr></table><h1>{{ctrl.message}}</h1><progress value=\"{{ctrl.requestsDone}}\" max=\"{{ctrl.requestsTotal}}\"></progress><table><tr><th ng-click=\"ctrl.orderBy(\'artist\')\">artist<span ng-if=\"ctrl.orderedBy == \'artist\'\">{{ctrl.reverse ? \'desc\' : \'asc\'}}</span></th><th ng-click=\"ctrl.orderBy(\'title\')\">title<span ng-if=\"ctrl.orderedBy == \'title\'\">{{ctrl.reverse ? \'desc\' : \'asc\'}}</span></th><th ng-click=\"ctrl.orderBy(\'media\')\">media<span ng-if=\"ctrl.orderedBy == \'media\'\">{{ctrl.reverse ? \'desc\' : \'asc\'}}</span></th><th ng-click=\"ctrl.orderBy(\'condition\')\">condition<span ng-if=\"ctrl.orderedBy == \'condition\'\">{{ctrl.reverse ? \'desc\' : \'asc\'}}</span></th><th ng-click=\"ctrl.orderBy(\'price\')\">price<span ng-if=\"ctrl.orderedBy == \'price\'\">{{ctrl.reverse ? \'desc\' : \'asc\'}}</span></th></tr><tr ng-repeat=\"data in ctrl.data | orderBy:ctrl.orderedBy:ctrl.reverse\"><td>{{::data.artist}}</td><td><a ng-href=\"{{::data.uri}}\">{{::data.title}}</a></td><td>{{::data.media.join(\', \')}}</td><td>{{::data.condition}}</td><td>{{::data.currency}} {{::data.price}}</td></tr></table>");}]);
+
 angular.module('digger.core', []);
 
 angular.module('digger.core')
@@ -34407,7 +34409,7 @@ angular.module('digger.discogs').service('DiscogsService', ['$q', 'DiscogsAPI', 
 angular.module('digger.browse', ['digger.core', 'digger.discogs', 'ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/', {
-            templateUrl: 'browse.html',
+            templateUrl: 'views/browse/browse.html',
             controller: 'BrowseController',
             controllerAs: 'ctrl'
         });
@@ -34461,7 +34463,7 @@ angular.module('digger.browse')
             });
         }]);
 
-angular.module('digger', ['digger.browse', 'ngRoute'])
+angular.module('digger', ['digger.browse', 'digger.templates', 'ngRoute'])
 	.config(['$locationProvider', '$routeProvider',
 		function($locationProvider, $routeProvider) {
 			$locationProvider.hashPrefix('!');
