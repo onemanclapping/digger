@@ -34460,8 +34460,8 @@ angular.module('digger.browse')
                     console.log(this.potentialSellers);
                     console.error('info', scrapedInfo, chrome.runtime.lastError);
                 }
-            });
-        }]);*/
+            }); */
+        }]);
 
 angular.module('digger', ['digger.browse', 'digger.templates', 'ngRoute'])
 	.config(['$locationProvider', '$routeProvider',
