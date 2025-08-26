@@ -34450,7 +34450,7 @@ angular.module('digger.browse')
             if ($routeParams.buyer && $routeParams.seller) {
                 this.getRecs();
             }
-
+/* test delete
             chrome.runtime.sendMessage(diggerChromeID, 'diggerReady', undefined, (scrapedInfo) => {
                 if (scrapedInfo && scrapedInfo.scrapedPage) {
                     this.buyer = scrapedInfo.scrapedPage.username;
@@ -34461,7 +34461,7 @@ angular.module('digger.browse')
                     console.error('info', scrapedInfo, chrome.runtime.lastError);
                 }
             });
-        }]);
+        }]);*/
 
 angular.module('digger', ['digger.browse', 'digger.templates', 'ngRoute'])
 	.config(['$locationProvider', '$routeProvider',
